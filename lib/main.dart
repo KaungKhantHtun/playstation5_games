@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:ps5_games/presentation/binding/game_binding.dart';
 import 'package:ps5_games/presentation/page/home_page.dart';
 
 void main() {
@@ -20,7 +21,11 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => const HomePage()),
+        GetPage(
+          name: '/',
+          page: () => HomePage(),
+          binding: GameBinding(),
+        ),
       ],
     );
   }

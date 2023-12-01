@@ -81,12 +81,15 @@ class GameDetailPage extends StatelessWidget {
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.white70),
                               ),
-                              Text(
-                                List<String>.from(controller
-                                    .gameDetail.value.genres
-                                    .map((e) => e.name)).toList().join(", "),
-                                style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              Flexible(
+                                child: Text(
+                                  List<String>.from(controller
+                                      .gameDetail.value.genres
+                                      .map((e) => e.name)).toList().join(", "),
+                                  style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ],
                           ),

@@ -40,7 +40,6 @@ class _GameListPageState extends State<GameListPage> {
       isLoading = true;
       controller.fetchGames().then((_) {
         isLoading = false;
-       
       });
     }
   }
@@ -80,30 +79,6 @@ class _GameListPageState extends State<GameListPage> {
                   ),
                 );
               },
-            ))
-
-        /*
-        GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                crossAxisCount: 2,
-                childAspectRatio: 0.8),
-            itemCount: controller.games.length,
-            itemBuilder: (context, index) {
-              //return Text(controller.games[index].name);
-              return GestureDetector(
-                onTap: () =>
-                    Get.toNamed("/detail?id=${controller.games[index].id}"),
-                child: GameWidget(
-                  imgUrl: controller.games[index].backgroundImage,
-                  name: controller.games[index].name,
-                  releaseDate: controller.games[index].released,
-                  metacriticScore: controller.games[index].metacritic,
-                ),
-              );
-            })*/
-        // ),
-        );
+            )));
   }
 }

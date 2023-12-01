@@ -63,18 +63,16 @@ class GameDetailPage extends StatelessWidget {
                         ),
                         Padding(
                             padding: const EdgeInsets.symmetric(
-                              vertical: 16.0,
+                              vertical: 8.0,
                             ),
                             child: HtmlWidget(
-                                controller.gameDetail.value.description)
-                            //  Text(
-                            //   controller.gameDetail.value.description,
-                            //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                            // ),
-                            ),
+                              controller.gameDetail.value.description,
+                              textStyle: TextStyle(fontSize: 16),
+                            )),
+                        const Divider(),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 16.0,
+                            vertical: 8.0,
                           ),
                           child: Row(
                             children: [
@@ -95,7 +93,7 @@ class GameDetailPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 16.0,
+                            vertical: 8.0,
                           ),
                           child: Row(
                             children: [
@@ -114,7 +112,7 @@ class GameDetailPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 16.0,
+                            vertical: 8.0,
                           ),
                           child: Row(
                             children: [
@@ -133,7 +131,7 @@ class GameDetailPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 16.0,
+                            vertical: 8.0,
                           ),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,7 +156,7 @@ class GameDetailPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 16.0,
+                            vertical: 8.0,
                           ),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -183,7 +181,7 @@ class GameDetailPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 16.0,
+                            vertical: 8.0,
                           ),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,

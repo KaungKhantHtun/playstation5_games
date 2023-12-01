@@ -34,7 +34,9 @@ class _GameListPageState extends State<GameListPage> {
   }
 
   void scrollListener() {
-    if (scrollController.offset >= scrollController.position.maxScrollExtent &&
+    if (scrollController.offset >=
+            scrollController.position.maxScrollExtent -
+                MediaQuery.of(context).size.height &&
         !isLoading) {
       isLoading = true;
       controller.fetchGames().then((_) {
@@ -57,13 +59,24 @@ class _GameListPageState extends State<GameListPage> {
                   crossAxisCount: 2),
               itemBuilder: (context, index) {
                 //return Text(controller.games[index].name);
+                String imgUrl = controller.games[index].backgroundImage ?? "";
+                String name = controller.games[index].name;
+                String releaseDate = controller.games[index].released;
+                int metacritic = controller.games[index].metacritic;
+                var parameters = <String, String>{
+                  "imgUrl": imgUrl,
+                  "name": name,
+                  "releaseDate": releaseDate,
+                  "metacritic": metacritic.toString(),
+                };
                 return GestureDetector(
-                  onTap: () =>
-                      Get.toNamed("/detail?id=${controller.games[index].id}"),
+                  onTap: () => Get.toNamed(
+                      "/detail/${controller.games[index].id}",
+                      parameters: parameters),
                   child: GameWidget(
-                    imgUrl: controller.games[index].backgroundImage,
-                    name: controller.games[index].name,
-                    releaseDate: controller.games[index].released,
+                    imgUrl: imgUrl,
+                    name: name,
+                    releaseDate: releaseDate,
                     metacriticScore: controller.games[index].metacritic,
                   ),
                 );

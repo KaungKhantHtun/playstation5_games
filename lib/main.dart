@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
           binding: GameBinding(),
         ),
         GetPage(
-          name: '/detail',
+          name: '/detail/:id',
           page: () => GameDetailPage(),
           binding: GameBinding(),
         ),

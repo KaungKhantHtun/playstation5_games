@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ps5_games/core/util/const/label_const.dart';
@@ -34,8 +34,9 @@ class GameWidget extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(16),
                         topLeft: Radius.circular(16)),
-                    child: Image.network(
-                      imgUrl!,
+                    child: CachedNetworkImage(
+                      imageUrl: imgUrl!,
+                      errorWidget: (context, url, error) => Icon(Icons.error),
                       fit: BoxFit.cover,
                     ),
                   )
@@ -57,7 +58,7 @@ class GameWidget extends StatelessWidget {
               children: [
                 Text(
                   "$releaseDateLabel: ",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 14, color: Colors.white70),
                 ),
                 Text(
                   releaseDate,
@@ -77,10 +78,10 @@ class GameWidget extends StatelessWidget {
               children: [
                 Text(
                   "$metacriticScoreLabel: ",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 14, color: Colors.white70),
                 ),
                 Text(
-                  "${metacriticScore ?? 0}",
+                  "${metacriticScore == 0 ? '-' : metacriticScore}",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                 ),
               ],

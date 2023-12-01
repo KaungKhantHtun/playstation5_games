@@ -7,13 +7,6 @@ part 'game_detail_model.g.dart';
 
 @JsonSerializable()
 class GameDetailModel {
-  String name;
-  String released;
-  int metacritic;
-
-  @JsonKey(name: "background_image")
-  String backgroundImage;
-
   String description;
 
   List<DetailItemModel> genres;
@@ -22,10 +15,7 @@ class GameDetailModel {
   List<PlatformModel> platforms;
 
   GameDetailModel({
-    required this.name,
-    required this.released,
-    this.metacritic = 0,
-    required this.backgroundImage,
+   
     required this.description,
     required this.genres,
     required this.developers,
@@ -38,10 +28,7 @@ class GameDetailModel {
   Map<String, dynamic> toJson() => _$GameDetailModelToJson(this);
 
   GameDetailEntity toEntity() => GameDetailEntity(
-      name: name,
-      released: released,
-      metacritic: metacritic,
-      backgroundImage: backgroundImage,
+    
       description: description,
       genres: List.from(genres.map((e) => e.toEntity())),
       developers: List.from(developers.map((e) => e.toEntity())),

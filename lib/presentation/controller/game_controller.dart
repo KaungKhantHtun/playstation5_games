@@ -8,10 +8,6 @@ class GameController extends GetxController {
   GameUsecase gameUsecase = Get.find();
   List<GameEntity> _games = <GameEntity>[].obs;
   Rx<GameDetailEntity> _gameDetail = GameDetailEntity(
-    name: "",
-    released: "",
-    metacritic: 0,
-    backgroundImage: "",
     description: "",
     genres: [],
     developers: [],
@@ -20,12 +16,17 @@ class GameController extends GetxController {
   ).obs;
 
   RxInt _pageNo = RxInt(1);
+  RxBool _isLoading = RxBool(false);
 
   List<GameEntity> get games => _games;
   Rx<GameDetailEntity> get gameDetail => _gameDetail;
   RxInt get pageNo => _pageNo;
 
   set pageNo(RxInt page) => _pageNo = page;
+
+  RxBool get isLoading => _isLoading;
+
+  set isLoading(RxBool flag) => _isLoading = flag;
 
   @override
   void onInit() {
@@ -34,11 +35,15 @@ class GameController extends GetxController {
   }
 
   Future<void> fetchGames() async {
+    isLoading.value = true;
     _games.addAll(await gameUsecase.fetchGames(pageNo.value,
         "${DateTime.now().getLastYear()},${DateTime.now().getDate()}"));
+    isLoading.value = false;
   }
 
   Future<void> getGameDetail(int id) async {
+    isLoading.value = true;
     _gameDetail.value = await gameUsecase.getGameDetail(id);
+    isLoading.value = false;
   }
 }

@@ -10,7 +10,7 @@ GameDetailModel _$GameDetailModelFromJson(Map<String, dynamic> json) =>
     GameDetailModel(
       name: json['name'] as String,
       released: json['released'] as String,
-      metacritic: json['metacritic'] as int,
+      metacritic: json['metacritic'] as int? ?? 0,
       backgroundImage: json['background_image'] as String,
       description: json['description'] as String,
       genres: (json['genres'] as List<dynamic>)

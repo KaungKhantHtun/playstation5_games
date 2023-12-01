@@ -19,18 +19,23 @@ class GameController extends GetxController {
     platforms: [],
   ).obs;
 
+  RxInt _pageNo = RxInt(1);
+
   List<GameEntity> get games => _games;
   Rx<GameDetailEntity> get gameDetail => _gameDetail;
+  RxInt get pageNo => _pageNo;
+
+  set pageNo(RxInt page) => _pageNo = page;
 
   @override
   void onInit() {
-    fetchGames(1);
+    fetchGames();
     super.onInit();
   }
 
-  Future<void> fetchGames(int pageNo) async {
-    _games.addAll(await gameUsecase.fetchGames(
-        pageNo, "${DateTime.now().getDate()},${DateTime.now().getLastYear()}"));
+  Future<void> fetchGames() async {
+    _games.addAll(await gameUsecase.fetchGames(pageNo.value,
+        "${DateTime.now().getLastYear()},${DateTime.now().getDate()}"));
   }
 
   Future<void> getGameDetail(int id) async {

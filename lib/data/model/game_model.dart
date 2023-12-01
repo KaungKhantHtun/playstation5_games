@@ -4,14 +4,16 @@ part 'game_model.g.dart';
 
 @JsonSerializable()
 class GameModel {
+  int id;
   String name;
   String released;
   int metacritic;
 
   @JsonKey(name: "background_image")
-  String backgroundImage;
+  String? backgroundImage;
 
   GameModel({
+    required this.id,
     required this.name,
     required this.released,
     this.metacritic = 0,
@@ -24,6 +26,7 @@ class GameModel {
   Map<String, dynamic> toJson() => _$GameModelToJson(this);
 
   GameEntity toEntity() => GameEntity(
+    id: id,
       name: name,
       released: released,
       metacritic: metacritic,

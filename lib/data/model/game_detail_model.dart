@@ -24,7 +24,7 @@ class GameDetailModel {
   GameDetailModel({
     required this.name,
     required this.released,
-    required this.metacritic,
+    this.metacritic = 0,
     required this.backgroundImage,
     required this.description,
     required this.genres,

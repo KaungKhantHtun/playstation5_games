@@ -1,5 +1,8 @@
+import 'package:either_dart/either.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ps5_games/core/extension/datetime_ext.dart';
+import 'package:ps5_games/core/util/const/label_const.dart';
 import 'package:ps5_games/domain/entity/game_detail_entity.dart';
 import 'package:ps5_games/domain/entity/game_entity.dart';
 import 'package:ps5_games/domain/usecase/game_usecase.dart';
@@ -36,14 +39,33 @@ class GameController extends GetxController {
 
   Future<void> fetchGames() async {
     isLoading.value = true;
-    _games.addAll(await gameUsecase.fetchGames(pageNo.value,
-        "${DateTime.now().getLastYear()},${DateTime.now().getDate()}"));
+    var games = await gameUsecase.fetchGames(pageNo.value,
+        "${DateTime.now().getLastYear()},${DateTime.now().getDate()}");
+    games.fold(
+        (left) => Get.snackbar(
+              left.message,
+              tryAgainLabel,
+              snackPosition: SnackPosition.BOTTOM,
+              colorText: Colors.white,
+              borderRadius: 10,
+            ),
+        (right) => _games.addAll(right));
     isLoading.value = false;
+    pageNo.value++;
   }
 
   Future<void> getGameDetail(int id) async {
     isLoading.value = true;
-    _gameDetail.value = await gameUsecase.getGameDetail(id);
+    Either gameDetail = await gameUsecase.getGameDetail(id);
+    gameDetail.fold(
+        (left) => Get.snackbar(
+              left.message,
+              tryAgainLabel,
+              snackPosition: SnackPosition.BOTTOM,
+              colorText: Colors.white,
+              borderRadius: 10,
+            ),
+        (right) => _gameDetail.value = right);
     isLoading.value = false;
   }
 }

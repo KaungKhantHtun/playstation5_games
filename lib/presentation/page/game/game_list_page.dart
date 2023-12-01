@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:ps5_games/core/util/const/label_const.dart';
-import 'package:ps5_games/core/util/pagination/pagination_controller.dart';
 import 'package:ps5_games/presentation/controller/game_controller.dart';
 import 'package:ps5_games/presentation/widget/game_widget.dart';
 
@@ -41,7 +40,7 @@ class _GameListPageState extends State<GameListPage> {
       isLoading = true;
       controller.fetchGames().then((_) {
         isLoading = false;
-        controller.pageNo.value++;
+       
       });
     }
   }

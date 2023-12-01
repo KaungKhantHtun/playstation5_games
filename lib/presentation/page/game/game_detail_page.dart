@@ -19,36 +19,37 @@ class GameDetailPage extends StatelessWidget {
     controller.getGameDetail(int.parse(Get.parameters['id'] ?? "0"));
     return Scaffold(
         appBar: AppBar(
-          title: Text("Detail"),
+          title: const Text("Detail"),
         ),
         body: Obx(
           () => controller.isLoading.value
-              ? Center(child: CircularProgressIndicator())
+              ? const Center(child: CircularProgressIndicator())
               : SingleChildScrollView(
                   child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 24, horizontal: 16),
                     decoration: BoxDecoration(
                         // color: Color(0xff202020),
                         borderRadius: BorderRadius.circular(16)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
+                        SizedBox(
                           height: 280,
                           width: double.infinity,
                           child: imgUrl != null
                               ? ClipRRect(
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(24),
                                       bottomRight: Radius.circular(24)),
                                   child: CachedNetworkImage(
                                     imageUrl: imgUrl,
                                     errorWidget: (context, url, error) =>
-                                        Icon(Icons.error),
+                                        const Icon(Icons.error),
                                     fit: BoxFit.cover,
                                   ),
                                 )
-                              : SizedBox(),
+                              : const SizedBox(),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
@@ -56,8 +57,8 @@ class GameDetailPage extends StatelessWidget {
                           ),
                           child: Text(
                             name ?? "-",
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
+                            style: const TextStyle(
+                                fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                         ),
                         Padding(
@@ -77,7 +78,7 @@ class GameDetailPage extends StatelessWidget {
                           ),
                           child: Row(
                             children: [
-                              Text(
+                              const Text(
                                 "$genresLabel: ",
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.white70),
@@ -86,7 +87,7 @@ class GameDetailPage extends StatelessWidget {
                                 List<String>.from(controller
                                     .gameDetail.value.genres
                                     .map((e) => e.name)).toList().join(", "),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -98,14 +99,14 @@ class GameDetailPage extends StatelessWidget {
                           ),
                           child: Row(
                             children: [
-                              Text(
+                              const Text(
                                 "$releaseDateLabel: ",
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.white70),
                               ),
                               Text(
                                 releaseDate ?? "-",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -117,14 +118,14 @@ class GameDetailPage extends StatelessWidget {
                           ),
                           child: Row(
                             children: [
-                              Text(
+                              const Text(
                                 "$metacriticScoreLabel: ",
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.white70),
                               ),
                               Text(
                                 metacriticScore ?? "-",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -147,7 +148,7 @@ class GameDetailPage extends StatelessWidget {
                                   List<String>.from(controller
                                       .gameDetail.value.developers
                                       .map((e) => e.name)).toList().join(", "),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -172,7 +173,7 @@ class GameDetailPage extends StatelessWidget {
                                   List<String>.from(controller
                                       .gameDetail.value.publishers
                                       .map((e) => e.name)).toList().join(", "),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -199,7 +200,7 @@ class GameDetailPage extends StatelessWidget {
                                           .map((e) => e.platform.name))
                                       .toList()
                                       .join(", "),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),

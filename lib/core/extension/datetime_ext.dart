@@ -5,7 +5,6 @@ extension GetDate on DateTime {
     final dateFormat = DateFormat("yyyy-MM-dd");
 
     return dateFormat.format(this);
-    ;
   }
 
   String getLastYear() {
